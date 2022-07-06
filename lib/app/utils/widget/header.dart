@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:taks_management_app/app/routes/app_pages.dart';
+import 'package:taks_management_app/app/utils/style/AppColors.dart';
 
 class header extends StatelessWidget {
   const header({
@@ -15,8 +16,8 @@ class header extends StatelessWidget {
       padding: const EdgeInsets.only(left: 40, right: 40, top: 25),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center, children: [Column( crossAxisAlignment: CrossAxisAlignment.start, children:[
-         Text('Taks Management', style:  TextStyle(fontSize: 30, color: Colors.grey),),
-        Text('Manage Your Task Easy',style:  TextStyle(fontSize: 20, color: Colors.grey))]
+         Text('Taks Management', style:  TextStyle(fontSize: 30, color: AppColors.primaryText),),
+        Text('Manage Your Task Easy',style:  TextStyle(fontSize: 15, color: AppColors.primaryText))]
       ), 
       Spacer(),
       Expanded(
@@ -31,7 +32,7 @@ class header extends StatelessWidget {
         prefixIcon: Icon(Icons.search, color: Colors.amberAccent,),
         hintText: 'Search'),)),
         SizedBox(width: 20,),
-        Icon(Ionicons.notifications, color: Colors.grey,),
+        Icon(Ionicons.notifications, color: AppColors.primaryText,),
          SizedBox(width: 20,),
         GestureDetector(
           onTap: (){
@@ -44,13 +45,13 @@ class header extends StatelessWidget {
           },
           child: Row(
             children: [
-              Text('Sign Out', style: TextStyle(color: Colors.grey),),
+              Text('Sign Out', style: TextStyle(color: AppColors.primaryText, fontSize: 18),),
                SizedBox(width: 5,),
             ],
           ),
         ),
         
-        Icon(Ionicons.log_out_outline, color: Colors.grey,),
+        Icon(Ionicons.log_out_outline, color: AppColors.primaryText, size: 30,),
        ],),
     ),
     );
