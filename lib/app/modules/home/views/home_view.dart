@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ionicons/ionicons.dart';
-import 'package:taks_management_app/app/routes/app_pages.dart';
+
+import 'package:taks_management_app/app/utils/widget/header.dart';
 import 'package:taks_management_app/app/utils/widget/sidebar.dart';
 
 import '../controllers/home_controller.dart';
@@ -22,8 +22,16 @@ class HomeView extends GetView<HomeController> {
            Expanded(
             flex: 15,
             child: 
-          Container(
-            color: Colors.white,
+                    Column(
+            children: [header(),
+            Expanded(child: Container(
+              padding: EdgeInsets.all(50),
+              margin: EdgeInsets.all(10),
+             
+              decoration: BoxDecoration(
+                 color: Colors.white,
+                borderRadius: BorderRadius.circular(50)),
+            ))],
           ),
           )
         ],
@@ -31,4 +39,6 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
+
+
 
