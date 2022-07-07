@@ -5,70 +5,323 @@ import 'package:ionicons/ionicons.dart';
 import 'package:taks_management_app/app/utils/style/AppColors.dart';
 
 import 'package:taks_management_app/app/utils/widget/header.dart';
+import 'package:taks_management_app/app/utils/widget/myfriends.dart';
 import 'package:taks_management_app/app/utils/widget/sidebar.dart';
+import 'package:taks_management_app/app/utils/widget/upcomingtask.dart';
 
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-final GlobalKey<ScaffoldState> _drawerkey = GlobalKey();
-
+   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _drawerkey,
-      drawer: SideBar(),
-     backgroundColor: AppColors.primaryBg,
-      body: Row(
-        children: [
-           !context.isPhone ?
-          Expanded(
+      key: _drawerKey,
+      drawer: const SideBar(),
+      backgroundColor: AppColors.primaryBg,
+     
+      body: SafeArea(
+        child: Row(
+          children: [
+         !context.isPhone?  Expanded(
             flex: 2,
-            child:
-          SideBar()
-          ): SizedBox(),
-           Expanded(
+            child:   const SideBar(),
+          ): const SizedBox(),
+          Expanded(
             flex: 15,
-            child: 
-                    Column(
-            children: [!context.isPhone ? header(): Container(
-              padding: EdgeInsets.all(20),
-              child: Row(children: [
-                IconButton(
-                  onPressed: (){
-                    _drawerkey.currentState!.openDrawer();
-                  }, icon: Icon(Icons.menu, color: AppColors.primaryText,)),
-                  SizedBox(width: 15,),
-                  Column( crossAxisAlignment: CrossAxisAlignment.start, children:[
-         Text('Taks Management', style:  TextStyle(fontSize: 20, color: AppColors.primaryText),),
-        Text('Manage Your Task Easy',style:  TextStyle(fontSize: 15, color: AppColors.primaryText))]
-      ),
-      Spacer(),
-      Icon(
-        Ionicons.notifications, color: AppColors.primaryText,
-        ), SizedBox(width: 15,),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: CircleAvatar(
-            backgroundColor: Colors.amber , radius: 25, foregroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jennifer_Lawrence_in_2016.jpg/220px-Jennifer_Lawrence_in_2016.jpg'),
+            child: Column(
+              children: [
+                !context.isPhone? const header(): 
+                Container(
+                  //content //isipage //screen
+                  padding: EdgeInsets.all(20),
+                child: Row(children: [IconButton(onPressed: (){
+                  _drawerKey.currentState!.openDrawer();
+                }, icon: Icon(Icons.menu,color: AppColors.primaryText),
+                   ),
+                   Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [Text('Task Management',style:TextStyle(fontSize: 20, color: AppColors.primaryText),
           ),
-        )
-              ],),
-            ),
+          Text('Manage task made easy with friends',style: TextStyle(fontSize: 15, color: AppColors.primaryText),
+          ),
+          ],
+          ),
+          Spacer(),
+         const Icon(Icons.notifications,color: Colors.grey,size: 30,
+         ),
+         SizedBox(width: 5,),
+         ClipRRect(borderRadius: BorderRadius.circular(30),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 25,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+                ],
+                ),
+                ),
             Expanded(child: Container(
-              padding: EdgeInsets.all(50),
-              margin: !context.isPhone ? EdgeInsets.all(10): EdgeInsets.all(0),
-             
+              padding: !context.isPhone? EdgeInsets.all(50): EdgeInsets.all(0),
+              margin: !context.isPhone? EdgeInsets.all(10): EdgeInsets.all(0),
               decoration: BoxDecoration(
-                 color: Colors.white,
-                borderRadius:  !context.isPhone ? BorderRadius.circular(50):BorderRadius.circular(30),),
-            ))],
+              color: Colors.white,
+              borderRadius: !context.isPhone? BorderRadius.circular(50): BorderRadius.circular(20)
+              ),
+              child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     SizedBox(
+                       height: Get.height * 0.3,
+                       child: 
+                      
+                       Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                          Text('My Task', style: TextStyle(color: AppColors.primaryText, fontSize: 30,
+                                     ),
+                                     ),
+                                          SizedBox(),
+              //mystask
+              SizedBox(
+                height: 180,
+                child: ListView(
+                  clipBehavior: Clip.antiAlias
+                  ,scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              children: [
+                Container(width: 400,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                color: AppColors.cardBg, ),
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Row(
+                    children:[
+                  ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         Spacer(),
+         Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('100 %', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),
+         
+                    ],
+                    ),
+                    Spacer(),
+                     Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('10 / 10 Task', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),  
+         Text('Pemograman Mobile', style: TextStyle(color: AppColors.primaryText,fontSize: 20),
+         ),
+         Text('Deadline 2 hari lagi', style: TextStyle(color: AppColors.primaryText,fontSize: 15),
+         ),
+         ]),
+                ),
+                Container(width: 400,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                color: AppColors.cardBg, ),
+                 margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Row(
+                    children:[
+                  ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         Spacer(),
+         Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('100 %', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),
+         
+                    ],
+                    ),
+                    Spacer(),
+                     Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('10 / 10 Task', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),  
+         Text('Pemograman Mobile', style: TextStyle(color: AppColors.primaryText,fontSize: 20),
+         ),
+         Text('Deadline 2 hari lagi', style: TextStyle(color: AppColors.primaryText,fontSize: 15),
+         ),
+         ]),
+                ),
+                 Container(width: 400,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                color: AppColors.cardBg, ),
+                 margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Row(
+                    children:[
+                  ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         Spacer(),
+         Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('100 %', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),
+         
+                    ],
+                    ),
+                    Spacer(),
+                     Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('10 / 10 Task', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),  
+         Text('Pemograman Mobile', style: TextStyle(color: AppColors.primaryText,fontSize: 20),
+         ),
+         Text('Deadline 2 hari lagi', style: TextStyle(color: AppColors.primaryText,fontSize: 15),
+         ),
+         ]),
+                ),
+                 Container(width: 400,decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                color: AppColors.cardBg, ),
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  Row(
+                    children:[
+                  ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         ClipRRect(borderRadius: BorderRadius.circular(25),
+         child: CircleAvatar(backgroundColor: Colors.amber, radius: 20,
+         foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+         ),
+         ),
+         ),
+         Spacer(),
+         Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('100 %', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),
+         
+                    ],
+                    ),
+                    Spacer(),
+                     Container(
+           height: 25,
+           width: 80,
+           color: AppColors.primaryBg,
+           child: Center(child: Text('10 / 10 Task', style: TextStyle(color: AppColors.primaryText,
+           ),
+           ),
+           ),
+         ),  
+         Text('Pemograman Mobile', style: TextStyle(color: AppColors.primaryText,fontSize: 20),
+         ),
+         Text('Deadline 2 hari lagi', style: TextStyle(color: AppColors.primaryText,fontSize: 15),
+         ),
+         ]),
+                ),
+               
+               ],
+              
+              ),
+              ),
+            
+                         ],
+                       ),
+                     ),
+          !context.isPhone? Expanded(
+               child: Row(
+                 
+                 children: [
+                   UpcomingTask(),
+                   MyFriends(),
+                   
+                     
+                 ],    
+                ),
+             ): UpcomingTask(),
+              ]),
+            ),
+            ),
+            
+            ]),
           ),
-          )
         ],
+        ),
       ),
     );
   }
 }
+
 
 
 
