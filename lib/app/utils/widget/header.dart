@@ -47,11 +47,12 @@ class header extends StatelessWidget {
             children: [
               Text('Sign Out', style: TextStyle(color: AppColors.primaryText, fontSize: 18),),
                SizedBox(width: 5,),
+                 Icon(Ionicons.log_out_outline, color: AppColors.primaryText, size: 30,),
             ],
           ),
         ),
         
-        Icon(Ionicons.log_out_outline, color: AppColors.primaryText, size: 30,),
+      
        ],),
     ),
     );
