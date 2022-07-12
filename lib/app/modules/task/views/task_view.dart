@@ -50,7 +50,7 @@ final GlobalKey<ScaffoldState> _drawerkey = GlobalKey();
         ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: CircleAvatar(
-            backgroundColor: Colors.amber , radius: 25, foregroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jennifer_Lawrence_in_2016.jpg/220px-Jennifer_Lawrence_in_2016.jpg'),
+            backgroundColor: Colors.amber , radius: 25, foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90'),
           ),
         )
               ],),

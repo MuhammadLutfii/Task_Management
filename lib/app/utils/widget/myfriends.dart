@@ -38,14 +38,13 @@ class MyFriends extends StatelessWidget {
                       SizedBox(height: 400,child: GridView.builder(
                         shrinkWrap: true,
                         itemCount: 8,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 20, mainAxisSpacing: 20), itemBuilder: (context,index){
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: context.isPhone? 2: 3, crossAxisSpacing: 20, mainAxisSpacing: 20), itemBuilder: (context,index){
                          return Column(children: [
-                            ClipRRect(borderRadius: BorderRadius.circular(100),
-                 child: CircleAvatar(backgroundColor: Colors.amber, radius: 60,
-                 foregroundImage: NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
-                 ),
-                 ),
-                 ),
+                             ClipRRect(borderRadius: BorderRadius.circular(50),
+                                         child: Image( image:  NetworkImage('https://awsimages.detik.net.id/community/media/visual/2019/10/02/ded14627-7777-4579-ab42-d8fa75b143b1_43.jpeg?w=700&q=90',
+                                         ),
+                                         ),
+                                         ),
                  Text('Robert downey Jr', style: TextStyle(color: AppColors.primaryText),)
       
                          ],);
